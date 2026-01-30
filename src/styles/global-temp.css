@@ -1,0 +1,534 @@
+/* ===================================
+   POLYPO DESIGN SYSTEM
+   Standardized across all pages
+   Based on reference images
+   =================================== */
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #ffffff;
+  color: #000000;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ===================================
+   DESIGN TOKENS
+   =================================== */
+
+:root {
+  /* Typography Sizes - FIXED values from reference */
+  --hero-xl: 56px;
+  --hero-lg: 48px;
+  --hero-md: 40px;
+  
+  --section-xl: 42px;
+  --section-lg: 36px;
+  --section-md: 32px;
+  
+  --subsection-lg: 28px;
+  --subsection-md: 24px;
+  --subsection-sm: 20px;
+  
+  --body-lg: 18px;
+  --body-md: 16px;
+  --body-sm: 14px;
+  
+  --label-md: 13px;
+  --label-sm: 12px;
+  
+  /* Font Weights */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  
+  /* Line Heights */
+  --lh-tight: 1.1;
+  --lh-snug: 1.2;
+  --lh-normal: 1.4;
+  --lh-relaxed: 1.6;
+  --lh-loose: 1.8;
+  
+  /* Spacing - FIXED values */
+  --section-xl: 120px;
+  --section-lg: 100px;
+  --section-md: 80px;
+  --section-sm: 60px;
+  
+  --card-xl: 48px;
+  --card-lg: 40px;
+  --card-md: 32px;
+  --card-sm: 24px;
+  
+  --gap-xl: 32px;
+  --gap-lg: 24px;
+  --gap-md: 20px;
+  --gap-sm: 16px;
+  --gap-xs: 12px;
+  
+  --space-xl: 48px;
+  --space-lg: 32px;
+  --space-md: 24px;
+  --space-sm: 16px;
+  --space-xs: 12px;
+  --space-xxs: 8px;
+  
+  /* Colors */
+  --white: #FFFFFF;
+  --black: #000000;
+  
+  --gray-50: #FAFAFA;
+  --gray-100: #F5F5F5;
+  --gray-200: #EEEEEE;
+  --gray-300: #E0E0E0;
+  --gray-400: #BDBDBD;
+  --gray-500: #9E9E9E;
+  --gray-600: #757575;
+  --gray-700: #616161;
+  --gray-800: #424242;
+  --gray-900: #212121;
+  
+  --purple: #843CFC;
+  --purple-light: #E5DFEE;
+  --purple-lighter: #F5F3F7;
+  
+  --blue-light: #DEEAF4;
+  --blue-lighter: #E8F2F8;
+  --green-light: #EDF2EC;
+  --pink-light: #F7F4F4;
+  
+  /* Border Radius */
+  --radius-full: 9999px;
+  --radius-xl: 32px;
+  --radius-lg: 24px;
+  --radius-md: 20px;
+  --radius-sm: 16px;
+  --radius-xs: 12px;
+  --radius-xxs: 8px;
+  
+  /* Containers */
+  --container-xl: 1400px;
+  --container-lg: 1200px;
+  --container-md: 900px;
+  --container-sm: 700px;
+  
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.08);
+  --shadow-xl: 0 20px 48px rgba(0, 0, 0, 0.12);
+}
+
+/* ===================================
+   LAYOUT CONTAINERS
+   =================================== */
+
+.container {
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.container-lg {
+  max-width: var(--container-lg);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.container-md, .container-narrow {
+  max-width: var(--container-md);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.container-sm {
+  max-width: var(--container-sm);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ===================================
+   SECTION PATTERNS
+   =================================== */
+
+.section {
+  padding: var(--section-lg) 0;
+}
+
+.section-xl {
+  padding: var(--section-xl) 0;
+}
+
+.section-md {
+  padding: var(--section-md) 0;
+}
+
+.section-sm {
+  padding: var(--section-sm) 0;
+}
+
+/* Section Header Pattern */
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-label {
+  font-size: var(--label-md);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray-600);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.section-title {
+  font-size: var(--section-xl);
+  font-weight: var(--weight-medium);
+  line-height: var(--lh-snug);
+  color: var(--black);
+  margin-bottom: 16px;
+}
+
+.section-description {
+  font-size: var(--body-lg);
+  line-height: var(--lh-relaxed);
+  color: var(--gray-700);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ===================================
+   TYPOGRAPHY CLASSES
+   =================================== */
+
+.hero-title {
+  font-size: var(--hero-xl);
+  font-weight: var(--weight-medium);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.02em;
+  color: var(--black);
+}
+
+.hero-subtitle {
+  font-size: var(--body-lg);
+  font-weight: var(--weight-regular);
+  line-height: var(--lh-relaxed);
+  color: var(--gray-700);
+}
+
+.card-title {
+  font-size: var(--subsection-md);
+  font-weight: var(--weight-semibold);
+  line-height: var(--lh-normal);
+  color: var(--black);
+  margin-bottom: 12px;
+}
+
+.card-description {
+  font-size: var(--body-md);
+  line-height: var(--lh-relaxed);
+  color: var(--gray-700);
+}
+
+.body-text {
+  font-size: var(--body-md);
+  line-height: var(--lh-relaxed);
+  color: var(--gray-700);
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* ===================================
+   GRID PATTERNS
+   =================================== */
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--gap-lg);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap-md);
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap-md);
+}
+
+.grid-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+/* ===================================
+   CARD PATTERNS
+   =================================== */
+
+.card {
+  background: var(--gray-50);
+  border-radius: var(--radius-lg);
+  padding: var(--card-lg);
+  transition: all var(--transition-normal);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-white {
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+
+.card-white:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+/* ===================================
+   BUTTON PATTERNS
+   =================================== */
+
+.btn {
+  font-size: var(--body-md);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 14px 40px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--black);
+  background: var(--white);
+  color: var(--black);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  background: var(--black);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: var(--black);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: var(--gray-800);
+}
+
+.btn-secondary {
+  border-color: var(--gray-300);
+  color: var(--gray-700);
+}
+
+.btn-secondary:hover {
+  border-color: var(--black);
+  color: var(--black);
+  background: var(--white);
+}
+
+/* ===================================
+   IMAGE CONTAINERS
+   =================================== */
+
+.img-container {
+  background: var(--gray-100);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  position: relative;
+}
+
+.img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ===================================
+   BADGES & TAGS
+   =================================== */
+
+.badge {
+  display: inline-block;
+  padding: 8px 20px;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-full);
+  font-size: var(--label-sm);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray-700);
+}
+
+.tag {
+  display: inline-block;
+  padding: 6px 16px;
+  background: var(--gray-100);
+  border-radius: var(--radius-full);
+  font-size: var(--label-sm);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--gray-700);
+}
+
+/* ===================================
+   UTILITIES
+   =================================== */
+
+.hover-lift {
+  transition: all var(--transition-normal);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.hover-scale {
+  transition: all var(--transition-normal);
+}
+
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+
+@media (max-width: 1200px) {
+  :root {
+    --section-xl: 100px;
+    --section-lg: 80px;
+    --hero-xl: 48px;
+    --section-xl: 36px;
+  }
+  
+  .container {
+    padding: 0 32px;
+  }
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --section-xl: 80px;
+    --section-lg: 60px;
+    --section-md: 50px;
+    --hero-xl: 42px;
+    --section-xl: 32px;
+    --card-lg: 32px;
+  }
+  
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .grid-split {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-xl: 60px;
+    --section-lg: 48px;
+    --section-md: 40px;
+    --hero-xl: 36px;
+    --section-xl: 28px;
+    --card-lg: 24px;
+    --card-md: 20px;
+  }
+  
+  .container {
+    padding: 0 24px;
+  }
+  
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+    gap: var(--gap-sm);
+  }
+  
+  .section-header {
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --hero-xl: 32px;
+    --section-xl: 24px;
+  }
+  
+  .container {
+    padding: 0 20px;
+  }
+  
+  .btn {
+    padding: 12px 32px;
+    font-size: 14px;
+  }
+}
