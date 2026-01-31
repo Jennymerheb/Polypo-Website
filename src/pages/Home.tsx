@@ -237,6 +237,7 @@ const Home: React.FC = () => {
                 <span className="step-number">3</span>
                 <div className="step-content">
                   <h4>Brands learn and improve over time</h4>
+                  <p>Fit analytics reveal inconsistencies, patterns, and opportunities to refine sizing.</p>
                 </div>
               </div>
               
@@ -251,7 +252,7 @@ const Home: React.FC = () => {
           
           <div className="hiw-visual">
             <div className="visual-container">
-              <div className="visual-badge">Size Small</div>
+              <div className="visual-badge">SIZE SMALL</div>
             </div>
           </div>
         </div>
