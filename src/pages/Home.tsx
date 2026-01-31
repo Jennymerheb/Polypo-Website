@@ -1,13 +1,59 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import '../styles/Home.css';
 
 const Home: React.FC = () => {
+  const [activeCard, setActiveCard] = useState<number>(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const valuePropsRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!valuePropsRef.current) return;
+
+      const rect = valuePropsRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // Start when element top enters viewport, complete when element top reaches top of viewport
+      const startPoint = windowHeight * 0.8;
+      const endPoint = windowHeight * 0.2;
+
+      const progress = Math.min(1, Math.max(0, (startPoint - rect.top) / (startPoint - endPoint)));
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const benefitCards = [
+    {
+      title: 'Reduce Returns',
+      description: 'Around 20% fewer wrong-size purchases, fewer unnecessary shipments, and less size bracketing.',
+      highlight: '20%',
+      image: '/benefit-returns.jpg'
+    },
+    {
+      title: 'Boost Conversion',
+      description: '+16% conversion lift when shoppers trust the fit, they buy with confidence.',
+      highlight: '+16%',
+      image: '/benefit-conversion.jpg'
+    },
+    {
+      title: 'Improve Fit Data',
+      description: 'Turn shopper interactions into fit signals your team can use to refine sizing rules, reduce uncertainty, and scale consistency.',
+      highlight: '',
+      image: '/benefit-data.jpg'
+    }
+  ];
+
   return (
     <div className="home-page">
       <Navigation />
-      
+
       {/* Hero Section */}
       <section className="hero-section">
         <div className="hero-glass-container">
@@ -40,19 +86,34 @@ const Home: React.FC = () => {
       </section>
 
       {/* Main Value Proposition */}
-      <section className="value-prop-section">
+      <section className="value-prop-section" ref={valuePropsRef}>
         <div className="container-narrow">
           <h2 className="section-heading">
-            Polypo replaces generic size charts with AI fit intelligence built around your brand. 
-            We deliver consistent sizing across every style because inconsistent fit is fashion's 
-            most expensive problem.
+            {`Polypo replaces generic size charts with AI fit intelligence built around your brand. We deliver consistent sizing across every style because inconsistent fit is fashion's most expensive problem.`
+              .split(' ')
+              .map((word, index, arr) => {
+                const wordProgress = index / arr.length;
+                const isVisible = scrollProgress > wordProgress;
+                return (
+                  <span
+                    key={index}
+                    style={{
+                      color: isVisible ? 'rgba(0, 0, 0, 1)' : 'rgba(0, 0, 0, 0.15)',
+                      transition: 'color 0.15s ease',
+                    }}
+                  >
+                    {word}{' '}
+                  </span>
+                );
+              })}
           </h2>
         </div>
       </section>
 
-      {/* Problem Sections */}
+      {/* Problem Sections - Stacking Cards */}
       <section className="problems-section">
         <div className="container">
+          <div className="stack-cards">
           <div className="problem-card returns">
             <div className="problem-content">
               <span className="problem-badge">RETURNS</span>
@@ -98,6 +159,7 @@ const Home: React.FC = () => {
             </div>
             <div className="problem-visual"></div>
           </div>
+          </div>
         </div>
       </section>
 
@@ -108,32 +170,37 @@ const Home: React.FC = () => {
             <p className="section-label">WHAT YOU GET</p>
             <h2 className="section-title">Clear fit. Better performance.</h2>
             <p className="section-description">
-              Polypo helps shoppers understand how things will fit before they buy: 
+              Polypo helps shoppers understand how things will fit before they buy:
               turning sizing from uncertainty into confidence, and fit from a cost into a growth lever.
             </p>
           </div>
-          
-          <div className="benefits-grid">
-            <div className="benefit-card featured">
-              <h3>Reduce Returns</h3>
-              <p>
-                Around <strong>20%</strong> fewer wrong-size purchases, 
-                fewer unnecessary shipments, and less size bracketing.
-              </p>
-              <div className="benefit-visual"></div>
-            </div>
-            
-            <div className="benefit-card">
-              <h3>Boost Conversion</h3>
-              <div className="benefit-icon">→</div>
-            </div>
-            
-            <div className="benefit-card">
-              <h3>Improve Fit Data</h3>
-              <div className="benefit-icon">→</div>
-            </div>
+
+          <div className="benefits-accordion">
+            {benefitCards.map((card, index) => (
+              <div
+                key={index}
+                className={`benefit-accordion-card ${activeCard === index ? 'active' : ''}`}
+                onMouseEnter={() => setActiveCard(index)}
+              >
+                <div className="benefit-accordion-text">
+                  <div className="benefit-accordion-header">
+                    <h3>{card.title}</h3>
+                  </div>
+                  <div className="benefit-accordion-content">
+                    <p>
+                      {card.highlight && <strong>{card.highlight}</strong>}
+                      {card.description.replace(card.highlight, '').trim()}
+                    </p>
+                  </div>
+                  <span className="benefit-arrow">↗</span>
+                </div>
+                <div className="benefit-accordion-image">
+                  <div className="benefit-image-placeholder"></div>
+                </div>
+              </div>
+            ))}
           </div>
-          
+
           <div className="benefits-quote">
             <p>
               "With Polypo, Better fit decisions for shoppers. Smarter performance for brands."

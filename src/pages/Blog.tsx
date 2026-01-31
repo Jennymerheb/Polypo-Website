@@ -31,36 +31,21 @@ const Blog: React.FC = () => {
       
       {/* Hero Section with Featured Articles */}
       <section className="blog-hero-section">
-        <div className="hero-split">
-          <div className="hero-article featured">
-            <div className="article-overlay">
-              <span className="featured-badge">FEATURED</span>
-              <div className="article-info">
-                <div className="article-title-badge">NAME OF THE ARTICLE</div>
-                <div className="article-tags">
-                  <span className="tag">TECH</span>
-                  <span className="tag">FASHION</span>
-                  <span className="tag">INNOVATION</span>
-                  <span className="tag">FUTURE</span>
-                  <span className="tag">SUSTAINABILITY</span>
-                </div>
-              </div>
-            </div>
+        <div className="hero-card">
+          <div className="hero-card-content">
+            <h1 className="hero-title">Resources</h1>
+            <p className="hero-subtitle">
+              Insights, features, and stories from the world of fashion technology,
+              sizing innovation, and the future of fit.
+            </p>
           </div>
-          
-          <div className="hero-article">
-            <div className="article-overlay">
-              <div className="article-info">
-                <div className="article-title-badge">NAME OF THE ARTICLE</div>
-                <div className="article-tags">
-                  <span className="tag">TECH</span>
-                  <span className="tag">FASHION</span>
-                  <span className="tag">INNOVATION</span>
-                  <span className="tag">FUTURE</span>
-                  <span className="tag">SUSTAINABILITY</span>
-                </div>
-              </div>
-            </div>
+        </div>
+        <div className="hero-card">
+          <div className="hero-card-content">
+            <h1 className="hero-title">Latest</h1>
+            <p className="hero-subtitle">
+              Stay updated with the newest trends, product updates, and industry insights.
+            </p>
           </div>
         </div>
       </section>
@@ -140,7 +125,7 @@ const Blog: React.FC = () => {
             <p className="section-label">GET SUPPORT</p>
             <h2>Book a call with us for support</h2>
             <p className="support-description">
-              See how Polypo adapts to your brand from size recommendations to fit 
+              See how Polypo adapts to your brand from size recommendations to fit
               visualization, data, and rollout.
             </p>
             <button className="btn btn-primary">ASK OUR TEAM</button>
